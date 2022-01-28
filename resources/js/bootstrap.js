@@ -1,8 +1,10 @@
 window._ = require('lodash');
 
 try {
-    require('bootstrap');
+    window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
+    
+    require('bootstrap');
     window.socket = io('http://127.0.0.1:3000');
 } catch (e) {}
 

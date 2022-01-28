@@ -1,4 +1,5 @@
-const Utils = require('./Utils')
+const Utils = require('./Utils');
+const Shop = require('./Shop');
 const Game = {
     pageEl:{
         selector: "#game-page"
@@ -6,6 +7,10 @@ const Game = {
     init(){
         if (!Utils.checkSection(this.pageEl.selector)) return false;
         this.setListeners();
+        this.setPanelsListeners();
+    },
+    setPanelsListeners(){
+        Shop.init();
     },
     setListeners(){
         const $this = this;
@@ -16,13 +21,13 @@ const Game = {
     },
     setListenersSockets(){
         socket.on('user-within-area-' + window.uid, (parameters) => {
-            alert("Usuario dentro de area");
+            Shop.showShopButtonHandler();
         });
         socket.on('user-entering-area-' + window.uid, (parameters) => {
             alert("Usuario entrando a area");
         });
         socket.on('user-leaving-area-' + window.uid, (parameters) => {
-            alert("Usuario saliendo de area");
+            Shop.removeShopButtonHandler();
         });
         socket.on('user-in-flowepower-' + window.uid, (parameters) => {
             alert("Usuario en flowepower");

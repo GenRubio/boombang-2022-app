@@ -1,0 +1,1 @@
+@include('components.game-panels.panel-buttons.shop')
