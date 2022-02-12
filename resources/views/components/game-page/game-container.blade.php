@@ -4,4 +4,5 @@
         <param name="allowScriptAccess" value="always" />
     </object>
 </div>
+@include('components.stage.chat')
 @include('components.game-panels.panels')

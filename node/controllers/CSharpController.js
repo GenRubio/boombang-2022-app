@@ -8,7 +8,6 @@ const CSharpController = {
         io.emit(key + "-" + parameters[1], parameters);
         break;
       case "user-entering-area":
-        console.log(uid);
         io.emit(key + "-" + uid, parameters);
         break;
       case "user-leaving-area":

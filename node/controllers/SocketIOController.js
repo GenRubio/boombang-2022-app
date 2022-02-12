@@ -5,7 +5,7 @@ const SocketIOController = {
   reciveDataSocketIO(io, clientC) {
     const $this = this;
     io.on("connection", (socket) => {
-      socket.on("change-ficha-user", (data) => {
+      socket.on("send-message", (data) => {
         var clientIp = socket.request.connection.remoteAddress;
         $this.sendDataCSharp(clientC, $this.prepairData(data, clientIp));
       });
@@ -25,6 +25,7 @@ const SocketIOController = {
     return callback.substring(0, callback.length - 1);
   },
   sendDataCSharp(clientC, data) {
+    console.log(data);
     clientC.write(data);
   },
 };
