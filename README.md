@@ -116,4 +116,8 @@ Esto hará que se ejecute el servidor de Node que hace de intermediario entre Em
 
 Ahora si todo está configurado :)
 
+Ejemplos:
+
+https://www.youtube.com/watch?v=CgHt3hNFGuk&t=1088s&ab_channel=BurBianGame
+https://www.youtube.com/watch?v=TX9t3Yj7PBU&t=1099s&ab_channel=BurBianGame
 
