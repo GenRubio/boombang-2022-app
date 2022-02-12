@@ -1,66 +1,119 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# BoomBang-Launcher-2022
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto es el launcher del juego BoomBang basado en los archivos del año 2011. 
 
-## About Laravel
+El proyecto está compuesto por el laucher y el emulador.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+BoomBang Game Emulator: https://github.com/GenRubio/boombang-2022-emulator
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Contenido
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+ - Systema de autologin
+ - Socket.io integration
+ - Node web socket connection - C# connection
 
-## Learning Laravel
+## Pre Configuración
+ - Para empezar la instalación primero debemos asegurarnos de tener instalados las siguientes aplicaciones
+ - 1. PHP 7.4
+ - 2. Composer
+ - 3. Node v16.13.2
+ - 4. NPM 8.1.2
+ - 5. XAMPP u otro gestor de base de datos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+El siguiente paso es unir el php con el Composer para ello al instalar el composer seleccionaremos el php.exe de la carpeta PHP 7.4
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Una vez instalador en visual code podemos ejecutar el siguiente comando 
+```sh
+php -v
+```
+Este comando nos dirá que versión de php está instalada en composer debe aparecer 7.4 o superior.
 
-## Laravel Sponsors
+Ahora en nuestro gestor de base de datos vamos a crear una nueva base de datos. La llamaremos "boombang"
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Configuración
 
-### Premium Partners
+Una vez terminada la pre configuración vamos a empezar a instalar todas las dependencias del proyecto.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+En el siguiente proyecto se están usando varias tecnologías diferentes
 
-## Contributing
+- Electron
+- Laravel
+- Node
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+La carpeta principal de proyecto es Laravel dentro encontraremos las demás 2 carpetas node y electrón.
 
-## Code of Conduct
+Dentro de la raíz del proyecto vamos a ejecutar los siguientes comandos para instalar las dependencias de composer y node sobre el Laravel
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Ejecutamos los siguientes comandos
 
-## Security Vulnerabilities
+```sh
+composer install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```sh
+npm install
+```
 
-## License
+Al terminar de ejecutarse los comandos veremos que se no han creado 2 carpetas nuevas node_modules y vendor estas carpetas no se tocan hay de descargar todos los plugins
+necesarios para el correcto funcionamiento de Laravel.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Ahora vamos a comprobar si en nuestra raíz del proyecto se encuentra en archivo .env.
+
+En el caso de no tener ese archivo vamos a copiar el archivo .env.example y lo renombramos por .env
+
+En la variable de DB_DATABASE= vamos a colocar el nombre de nuestra base de datos DB_DATABASE=boombang
+
+Una vez hecho esta configuración vamos a guardar los cambios ejecutando el siguiente comando
+
+```sh
+php artisan config:cache
+```
+
+Ahora vamos a ejecutar el siguiente comando para arrancar el servidor de Laravel
+
+```sh
+php artisan serve
+```
+
+Si nos vamos al navegador y colocamos la url que nos proporciona Laravel http://127.0.0.1:8000 veremos que nos redireje a Google
+
+No tengas miedo es correcto ya que dentro del proyecto hay una validación para que la web de Laravel solo pueda cargarse dentro de Electrón.
+
+Ahora vamos a instalar las dependencias de electrón 
+
+- Nos dirigiremos a la carpeta electrón y dentro abrimos nueva terminal
+- Ejecutamos el siguiente comando
+
+```sh
+npm install
+```
+
+Como puedes observar se te creó nueva carpeta node_modules esta carpeta tiene el mismo funcionamiento que la de Laravel
+
+Para iniciar el Electrón usaremos el siguiente comando 
+
+```sh
+npm start
+```
+
+Recuerda que Electrón carga dentro de él Laravel por ende tenemos que tener ejecutado el comando php artisan serve que inicia el Laravel
+
+Si todo sale bien se nos abrirá ventana de Electrón mostrando un login 
+
+Recuerda tener encendido el proyecto de Emulador.
+
+Pero esto no es así ya que si intentas loguearte veras que se te va la conexion. La razón de este error es porque el login se produce a través de Sockets.
+
+Hay que realizar un paso intermedio, una vez ejecutado el Emulador nos tenemos que dirigir a la carpeta node dentro de Laravel y abrir nueva terminal.
+
+En la terminal ejecutaremos el siguiente comando
+
+```sh
+node server.js
+```
+
+Esto hará que se ejecute el servidor de Node que hace de intermediario entre Emulador y Web
+
+Ahora si todo está configurado :)
+
+
